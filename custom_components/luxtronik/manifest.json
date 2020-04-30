@@ -1,0 +1,13 @@
+{
+  "domain": "luxtronik",
+  "name": "Luxtronik",
+  "documentation": "https://www.home-assistant.io/integrations/luxtronik",
+  "requirements": [
+    "luxtronik==0.2.6"
+  ],
+  "dependencies": [],
+  "codeowners": [
+    "@bouni"
+  ]
+}
+
