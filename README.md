@@ -44,6 +44,14 @@ luxtronik:
 
 Not all data received by the Luxronik controller is understood by now as the protocol is not publicly documented.  
 
+## Parameter IDs
+
+Take these files as a reference to figure ot which IDs to use:
+
+- https://github.com/Bouni/python-luxtronik/blob/master/luxtronik/parameters.py
+- https://github.com/Bouni/python-luxtronik/blob/master/luxtronik/calculations.py
+- https://github.com/Bouni/python-luxtronik/blob/master/luxtronik/visibilities.py
+
 ## Service
 
 In order to change parameters on the Luxtronik conroller, you can use the following service:
