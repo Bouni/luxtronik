@@ -3,7 +3,7 @@
   "name": "Luxtronik",
   "documentation": "https://www.home-assistant.io/integrations/luxtronik",
   "requirements": [
-    "luxtronik==0.2.10"
+    "luxtronik==0.2.11"
   ],
   "dependencies": [],
   "codeowners": [
