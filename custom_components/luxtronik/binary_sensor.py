@@ -3,7 +3,7 @@ import logging
 
 import voluptuous as vol
 
-from homeassistant.components.binary_sensor import PLATFORM_SCHEMA, BinarySensorDevice
+from homeassistant.components.binary_sensor import PLATFORM_SCHEMA, BinarySensorEntity
 from homeassistant.const import CONF_FRIENDLY_NAME, CONF_ICON, CONF_ID, CONF_SENSORS
 import homeassistant.helpers.config_validation as cv
 from homeassistant.util import slugify
@@ -76,7 +76,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities(entities, True)
 
 
-class LuxtronikBinarySensor(BinarySensorDevice):
+class LuxtronikBinarySensor(BinarySensorEntity):
     """Representation of a Luxtronik binary sensor."""
 
     def __init__(self, luxtronik, sensor, friendly_name, icon, invert_state):
