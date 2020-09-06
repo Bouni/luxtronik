@@ -59,10 +59,10 @@ In order to change parameters on the Luxtronik conroller, you can use the follow
 ```yaml
 Domain: luxtronik
 Service: write
-Service Data: {"id": "ID_Ba_Hz_akt", "value": "Automatic"}
+Service Data: {"parameter": "ID_Ba_Hz_akt", "value": "Automatic"}
 ```
 
-- id
+- parameter
   - description: ID of the parameter.
   - type: string
 - value
