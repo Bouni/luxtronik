@@ -1,4 +1,5 @@
 """Support for Luxtronik heatpump controllers."""
+import threading
 from datetime import timedelta
 import logging
 
@@ -83,6 +84,7 @@ class LuxtronikDevice:
 
     def __init__(self, host, port, safe):
         """Initialize the Luxtronik connection."""
+        self.lock = threading.Lock()
 
         self._host = host
         self._port = port
@@ -102,8 +104,20 @@ class LuxtronikDevice:
 
     def write(self, parameter, value):
         """Write a parameter to the Luxtronik heatpump."""
-        self._luxtronik.parameters.set(parameter, value)
-        self._luxtronik.write()
+        timeoutSec = 30
+        try:
+            if self.lock.acquire(blocking=True, timeout=timeoutSec):
+                self._luxtronik.parameters.set(parameter, value)
+                self._luxtronik.write()
+            else:
+                _LOGGER.warning(
+                    "Couldn't write luxtronik parameter %s with value %s because of lock timeout %s",
+                    parameter,
+                    value,
+                    timeoutSec
+                )
+        finally:
+            self.lock.release()
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     def update(self):
