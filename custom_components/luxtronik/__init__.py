@@ -104,10 +104,18 @@ class LuxtronikDevice:
 
     def write(self, parameter, value):
         """Write a parameter to the Luxtronik heatpump."""
-        self.lock.acquire()
+        timeoutSec = 30
         try:
-            self._luxtronik.parameters.set(parameter, value)
-            self._luxtronik.write()
+            if self.lock.acquire(blocking=True, timeout=timeoutSec):
+                self._luxtronik.parameters.set(parameter, value)
+                self._luxtronik.write()
+            else:
+                _LOGGER.warning(
+                    "Couldn't write luxtronik parameter %s with value %s because of lock timeout %s",
+                    parameter,
+                    value,
+                    timeoutSec
+                )
         finally:
             self.lock.release()
 
