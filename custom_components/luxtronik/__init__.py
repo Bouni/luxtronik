@@ -19,7 +19,7 @@ from .const import (
     CONF_SAFE,
     CONF_VISIBILITIES,
     CONF_UPDATE_IMMEDIATELY_AFTER_WRITE,
-    CONF_VISIBILITIES,
+    CONF_LOCK_TIMEOUT,
 )
 
 LuxLogger.setLevel(level="WARNING")
@@ -117,7 +117,7 @@ class LuxtronikDevice:
                 self._luxtronik.parameters.set(parameter, value)
                 self._luxtronik.write()
                 if update_immediately_after_write:
-                    self._luxtronik.read()                    
+                    self._luxtronik.read()
             else:
                 _LOGGER.warning(
                     "Couldn't write luxtronik parameter %s with value %s because of lock timeout %s",
@@ -133,7 +133,7 @@ class LuxtronikDevice:
         """Get the data from Luxtronik."""
         try:
             if self.lock.acquire(blocking=True, timeout=self._lock_timeout_sec):
-        		self._luxtronik.read()
+                self._luxtronik.read()
             else:
                 _LOGGER.warning(
                     "Couldn't read luxtronik data because of lock timeout %s",
