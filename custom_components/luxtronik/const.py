@@ -27,6 +27,8 @@ CONF_ENERGY = "energy"
 CONF_VOLTAGE = "voltage"
 CONF_HOURS = "hours"
 CONF_FLOW = "flow"
+CONF_LOCK_TIMEOUT = "lock_timeout"
+CONF_UPDATE_IMMEDIATELY_AFTER_WRITE = "update_immediately_after_write"
 
 
 ICONS = {
