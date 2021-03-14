@@ -1,6 +1,7 @@
 {
   "domain": "luxtronik",
   "name": "Luxtronik",
+  "version": "0.1.17",
   "documentation": "https://www.home-assistant.io/integrations/luxtronik",
   "requirements": [
     "luxtronik==0.3.6"
