@@ -4,7 +4,7 @@
   "version": "0.1.20",
   "documentation": "https://www.home-assistant.io/integrations/luxtronik",
   "requirements": [
-    "luxtronik==0.3.9"
+    "luxtronik"
   ],
   "dependencies": [],
   "codeowners": [
