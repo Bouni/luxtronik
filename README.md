@@ -2,6 +2,9 @@
 
 [![Validate with hassfest](https://github.com/Bouni/luxtronik/actions/workflows/hassfest.yml/badge.svg)](https://github.com/Bouni/luxtronik/actions/workflows/hassfest.yml)
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I364QTM)
+[![Github Sponsors](https://img.shields.io/badge/-Sponsor-fafbfc?style=for-the-badge&logo=GitHub%20Sponsors)](https://github.com/sponsors/Bouni)
+
 This component has been created to be used with Home Assistant.
 
 The `Luxtronik` integration lets you control heat pump units controlled by a Luxtronik controller. It is used by various manufacturers such as:
