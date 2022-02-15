@@ -5,7 +5,7 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.sensor import PLATFORM_SCHEMA
 from homeassistant.const import (CONF_FRIENDLY_NAME, CONF_ICON, CONF_ID,
-                                 CONF_SENSORS)
+                                 CONF_SENSORS, CONF_STATE_CLASS)
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import slugify
 
@@ -16,6 +16,7 @@ from .const import (CONF_CALCULATIONS, CONF_GROUP, CONF_PARAMETERS,
 _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_DEVICE_CLASS = None
+DEFAULT_STATE_CLASS = None
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
@@ -30,6 +31,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                     vol.Required(CONF_ID): cv.string,
                     vol.Optional(CONF_FRIENDLY_NAME): cv.string,
                     vol.Optional(CONF_ICON): cv.string,
+                    vol.Optional(CONF_STATE_CLASSS): cv.string,
                 }
             ],
         )
@@ -55,6 +57,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
                     sensor,
                     sensor_cfg.get(CONF_FRIENDLY_NAME),
                     sensor_cfg.get(CONF_ICON),
+                    sensor_cfg.get(CONF_STATE_CLASS),
                 )
             )
         else:
@@ -70,12 +73,13 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
 class LuxtronikSensor(Entity):
     """Representation of a Luxtronik sensor."""
 
-    def __init__(self, luxtronik, sensor, friendly_name, icon):
+    def __init__(self, luxtronik, sensor, friendly_name, icon, state_class):
         """Initialize a new Luxtronik sensor."""
         self._luxtronik = luxtronik
         self._sensor = sensor
         self._name = friendly_name
         self._icon = icon
+        self._state_class = state_class
 
     @property
     def entity_id(self):
@@ -103,6 +107,13 @@ class LuxtronikSensor(Entity):
         """Return the sensor state."""
         return self._sensor.value
 
+    @property
+    def state_class(self):
+        """Return the state class of this sensor."""
+        if not self._state_class
+            return DEFAULT_STATE_CLASS
+        return self._state_class
+        
     @property
     def device_class(self):
         """Return the class of this sensor."""
