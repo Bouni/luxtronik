@@ -1,6 +1,7 @@
 # Luxtronik
 
 [![Validate with hassfest](https://github.com/Bouni/luxtronik/actions/workflows/hassfest.yml/badge.svg)](https://github.com/Bouni/luxtronik/actions/workflows/hassfest.yml)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/I3I364QTM)
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/bouni)
