@@ -12,6 +12,7 @@ from homeassistant.const import (
 ATTR_PARAMETER = "parameter"
 ATTR_VALUE = "value"
 
+CONF_STATE_CLASS = "state_class"
 CONF_INVERT_STATE = "invert"
 CONF_SAFE = "safe"
 CONF_GROUP = "group"
