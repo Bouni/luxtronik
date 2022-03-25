@@ -3,15 +3,27 @@ import logging
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
-from homeassistant.components.sensor import PLATFORM_SCHEMA
-from homeassistant.const import (CONF_FRIENDLY_NAME, CONF_ICON, CONF_ID,
-                                 CONF_SENSORS, CONF_STATE_CLASS)
+from homeassistant.components.sensor import PLATFORM_SCHEMA, STATE_CLASSES_SCHEMA
+from homeassistant.const import (
+    CONF_FRIENDLY_NAME,
+    CONF_ICON,
+    CONF_ID,
+    CONF_SENSORS,
+)
 from homeassistant.helpers.entity import Entity
 from homeassistant.util import slugify
 
 from . import DOMAIN, ENTITY_ID_FORMAT
-from .const import (CONF_CALCULATIONS, CONF_GROUP, CONF_PARAMETERS,
-                    CONF_VISIBILITIES, DEVICE_CLASSES, ICONS, UNITS)
+from .const import (
+    CONF_CALCULATIONS,
+    CONF_GROUP,
+    CONF_PARAMETERS,
+    CONF_VISIBILITIES,
+    CONF_STATE_CLASS,
+    DEVICE_CLASSES,
+    ICONS,
+    UNITS,
+)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -31,7 +43,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
                     vol.Required(CONF_ID): cv.string,
                     vol.Optional(CONF_FRIENDLY_NAME): cv.string,
                     vol.Optional(CONF_ICON): cv.string,
-                    vol.Optional(CONF_STATE_CLASSS): cv.string,
+                    vol.Optional(CONF_STATE_CLASS): STATE_CLASSES_SCHEMA,
                 }
             ],
         )
@@ -110,10 +122,10 @@ class LuxtronikSensor(Entity):
     @property
     def state_class(self):
         """Return the state class of this sensor."""
-        if not self._state_class
+        if not self._state_class:
             return DEFAULT_STATE_CLASS
         return self._state_class
-        
+
     @property
     def device_class(self):
         """Return the class of this sensor."""

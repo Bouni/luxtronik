@@ -44,7 +44,9 @@ CONFIG_SCHEMA = vol.Schema(
                 vol.Required(CONF_PORT, default=8889): cv.port,
                 vol.Optional(CONF_SAFE, default=True): cv.boolean,
                 vol.Optional(CONF_LOCK_TIMEOUT, default=30): cv.positive_int,
-                vol.Optional(CONF_UPDATE_IMMEDIATELY_AFTER_WRITE, default=False): cv.boolean,
+                vol.Optional(
+                    CONF_UPDATE_IMMEDIATELY_AFTER_WRITE, default=False
+                ): cv.boolean,
             }
         )
     },
@@ -123,7 +125,7 @@ class LuxtronikDevice:
                     "Couldn't write luxtronik parameter %s with value %s because of lock timeout %s",
                     parameter,
                     value,
-                    self._lock_timeout_sec
+                    self._lock_timeout_sec,
                 )
         finally:
             self.lock.release()
@@ -137,7 +139,7 @@ class LuxtronikDevice:
             else:
                 _LOGGER.warning(
                     "Couldn't read luxtronik data because of lock timeout %s",
-                    self._lock_timeout_sec
+                    self._lock_timeout_sec,
                 )
         finally:
             self.lock.release()
