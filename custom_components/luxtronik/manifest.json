@@ -6,7 +6,7 @@
   "documentation": "https://www.home-assistant.io/integrations/luxtronik",
   "issue_tracker": "https://github.com/Bouni/luxtronik/issues",
   "requirements": [
-    "luxtronik==0.3.11"
+    "luxtronik==0.3.12"
   ],
   "dependencies": [],
   "codeowners": [
