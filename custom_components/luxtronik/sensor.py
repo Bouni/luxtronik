@@ -3,14 +3,13 @@ import logging
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
-from homeassistant.components.sensor import PLATFORM_SCHEMA, STATE_CLASSES_SCHEMA
+from homeassistant.components.sensor import PLATFORM_SCHEMA, STATE_CLASSES_SCHEMA, SensorEntity
 from homeassistant.const import (
     CONF_FRIENDLY_NAME,
     CONF_ICON,
     CONF_ID,
     CONF_SENSORS,
 )
-from homeassistant.helpers.entity import Entity
 from homeassistant.util import slugify
 
 from . import DOMAIN, ENTITY_ID_FORMAT
@@ -82,7 +81,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     add_entities(entities, True)
 
 
-class LuxtronikSensor(Entity):
+class LuxtronikSensor(SensorEntity):
     """Representation of a Luxtronik sensor."""
 
     def __init__(self, luxtronik, sensor, friendly_name, icon, state_class):
