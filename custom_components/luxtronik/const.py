@@ -76,7 +76,7 @@ DEVICE_CLASSES = {
 UNITS = {
     CONF_CELSIUS: UnitOfTemperature.CELSIUS,
     CONF_SECONDS: UnitOfTime.SECONDS,
-    CONF_KELVIN: "K",
+    CONF_KELVIN: UnitOfTemperature.KELVIN,
     CONF_BAR: UnitOfPressure.BAR,
     CONF_PERCENT: PERCENTAGE,
     CONF_ENERGY: UnitOfEnergy.KILO_WATT_HOUR,
